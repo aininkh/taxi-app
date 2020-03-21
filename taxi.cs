@@ -4,19 +4,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Taxi
+namespace TaxiApp
 {
     class Taxi
     {
         // Properties
-        public string DriverName { get; set; }
-        public int NumPassenger { get; set; }
-        public bool OnDuty { get; set; }
-        public string status { get; set; }
-        //method
+        public string DriverName;
+        public bool OnDuty;
+		public int NumPassenger;
+        string status;
+		
+        //fungsi untuk menampilkan info taxi
         public void TaxiInfo()
         {
-            Console.WriteLine("Driver Name          : {0} ", DriverName);
+			//menampilkan nama driver
+            Console.WriteLine("Driver Name:" + DriverName);
+			
+			//fungsi jika OnDuty true maka status berubah menjadi yes atau sebaliknya
             if (OnDuty == true)
             {
                 status = "Yes";
@@ -25,16 +29,32 @@ namespace Taxi
             {
                 status = "No";
             }
-            Console.WriteLine("On Duty              : {0} ", status);
-            Console.WriteLine("Number of Passenger  : {0}\n", NumPassenger);
+			
+			//fungsi jika OnDuty true maka jumlah penumpang akan menjadi 10 atau jika false maka jumlah penumpang menjadi 0
+			if (OnDuty == true)
+			{
+				NumPassenger = 10;
+			}
+			else
+			{
+				NumPassenger = 0;
+			}
+			
+			//menampilkan status driver
+            Console.WriteLine("On Duty : " + status);
+			
+			//menampilkan jumlah penumpang
+            Console.WriteLine("Number of Passenger  : " + NumPassenger);
         }
+		
         public void PickUpPassenger()
         {
-            Console.WriteLine("{0} sedang menjemput penumpang", DriverName);
+            Console.WriteLine(DriverName + "  sedang menjemput penumpang");
         }
+		
         public void DropOffPassenger()
         {
-            Console.WriteLine("{0} sedang mengantar penumpang", DriverName);
+            Console.WriteLine(DriverName + " sedang mengantar penumpang");
         }
     }
 }
