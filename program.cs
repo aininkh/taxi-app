@@ -4,24 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Taxi
+namespace TaxiApp
 {
     class Program
     {
-        // Membuat objek Taxi
         static void Main(string[] args)
         {
+			// Membuat objek Taxi
             Taxi taxi = new Taxi();
 
             // Pengesetan nilai properties
-            taxi.DriverName = "Jono";
+            taxi.DriverName = "Aini";
             taxi.OnDuty = true;
             taxi.NumPassenger = 10;
 
             // Pemanggilan method
             taxi.TaxiInfo();
-            taxi.PickUpPassenger();
-            taxi.DropOffPassenger();
+			
+			if (taxi.OnDuty == true)
+			{
+				//Taxi sedang mengantar penumpang
+				taxi.PickUpPassenger();
+				taxi.DropOffPassenger();
+			}
+			else if(taxi.OnDuty == false)
+			{
+				//Taxi sedang tidak mengantar penumpang
+				Console.WriteLine("Taxi tersedia");
+			}
 
             Console.ReadKey();
         }
